@@ -35,11 +35,11 @@ module.exports = class OrderService {
     return order;
   }
 
-  // static async delete({ quantity }) {
-  //   await sendSms(process.env.ORDER_HANDLER_NUMBER, `Order Deleted`);
+  static async delete(id) {
+    await sendSms(process.env.ORDER_HANDLER_NUMBER, `Order Deleted`);
 
-  //   const order = await Order.delete({ quantity });
+    const order = await Order.trash(id);
 
-  //   return order;
-  // }
+    return order;
+  }
 };

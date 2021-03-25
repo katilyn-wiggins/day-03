@@ -31,6 +31,9 @@ module.exports = Router()
       req.params.id
     );
     res.send(updateOrderWithId);
-  });
+  })
 
-// .delete('/:id', async (req, res, next) => {});
+  .delete('/:id', async (req, res, next) => {
+    const deleteOrderWithId = await OrderService.delete(req.params.id);
+    res.send(deleteOrderWithId);
+  });
