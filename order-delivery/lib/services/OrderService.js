@@ -19,6 +19,12 @@ module.exports = class OrderService {
     return order;
   }
 
+  static async allOrdersWithId(id) {
+    const order = await Order.produceWithId(id);
+
+    return order;
+  }
+
   // static async update({ quantity }) {
   //   await sendSms(
   //     process.env.ORDER_HANDLER_NUMBER,

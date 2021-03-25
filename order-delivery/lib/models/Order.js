@@ -27,4 +27,10 @@ module.exports = class Order {
 
     return rows.map((row) => new Order(row));
   }
+
+  static async produceWithId(id) {
+    const { rows } = await pool.query('SELECT * from orders WHERE id=$1', [id]);
+
+    return rows.map((row) => new Order(row));
+  }
 };

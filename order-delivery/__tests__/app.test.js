@@ -29,17 +29,6 @@ describe('03_separation-of-concerns-demo routes', () => {
       });
   });
 
-  // it('ASYNC/AWAIT: creates a new order in our database and sends a text message', async () => {
-  //   const res = await request(app)
-  //     .post('/api/v1/orders')
-  //     .send({ quantity: 10 });
-
-  //   expect(res.body).toEqual({
-  //     id: '1',
-  //     quantity: 10,
-  //   });
-  // });
-
   it('ASYNC/AWAIT: gets all orders in our database', async () => {
     await Order.insert({ quantity: 5 });
     const res = await request(app).get('/api/v1/orders');
@@ -52,16 +41,17 @@ describe('03_separation-of-concerns-demo routes', () => {
     ]);
   });
 
-  // describe('get by id function w/ async await', async () => {
-  //   it('ASYNC/AWAIT: gets all orders in our database with id 1', async () => {
-  //     const res = await request(app).get('/api/v1/orders/1');
+  it('ASYNC/AWAIT: gets all orders in our database with id 1', async () => {
+    await Order.insert({ quantity: 5 });
+    const res = await request(app).get('/api/v1/orders/1');
 
-  //     expect(res.body).toEqual({
-  //       id: '1',
-  //       quantity: 10,
-  //     });
-  //   });
-  // });
+    expect(res.body).toEqual([
+      {
+        id: '1',
+        quantity: 5,
+      },
+    ]);
+  });
 
   // describe('put function w/ .then', () => {
   //   it('updates an order in our database and sends a text message', () => {
@@ -75,6 +65,17 @@ describe('03_separation-of-concerns-demo routes', () => {
   //           quantity: 8,
   //         });
   //       });
+  //   });
+  // });
+
+  // it('ASYNC/AWAIT: creates a new order in our database and sends a text message', async () => {
+  //   const res = await request(app)
+  //     .post('/api/v1/orders')
+  //     .send({ quantity: 10 });
+
+  //   expect(res.body).toEqual({
+  //     id: '1',
+  //     quantity: 10,
   //   });
   // });
 });

@@ -18,6 +18,11 @@ module.exports = Router()
   .get('/', async (req, res, next) => {
     const allOrders = await OrderService.allOrders();
     res.send(allOrders);
+  })
+
+  .get('/:id', async (req, res, next) => {
+    const allOrdersWithId = await OrderService.allOrdersWithId(req.params.id);
+    res.send(allOrdersWithId);
   });
 
 // .get('/:id', async (req, res, next) => {})
