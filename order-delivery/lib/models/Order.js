@@ -23,8 +23,8 @@ module.exports = class Order {
   }
 
   static async produce() {
-    const { rows } = await pool.query('SELECT * from orders RETURNING *');
+    const { rows } = await pool.query('SELECT * from orders');
 
-    return new Order(rows);
+    return rows.map((row) => new Order(row));
   }
 };

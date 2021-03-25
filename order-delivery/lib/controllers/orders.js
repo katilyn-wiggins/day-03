@@ -16,7 +16,8 @@ module.exports = Router()
   })
 
   .get('/', async (req, res, next) => {
-    const getAllOrders = await OrderService.allOrders(req.body);
+    const allOrders = await OrderService.allOrders();
+    res.send(allOrders);
   });
 
 // .get('/:id', async (req, res, next) => {})
