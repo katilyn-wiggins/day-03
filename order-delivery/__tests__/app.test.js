@@ -53,20 +53,25 @@ describe('03_separation-of-concerns-demo routes', () => {
     ]);
   });
 
-  // describe('put function w/ .then', () => {
-  //   it('updates an order in our database and sends a text message', () => {
-  //     return request(app)
-  //       .put('/api/v1/orders')
-  //       .send({ quantity: 8 })
-  //       .then((res) => {
-  //         expect(createMessage).toHaveBeenCalledTimes(1);
-  //         expect(res.body).toEqual({
-  //           id: '1',
-  //           quantity: 8,
-  //         });
-  //       });
-  //   });
-  // });
+  it('updates an order in our database and sends a text message', async () => {
+    let newOrder = await Order.insert({ quantity: 5 });
+
+    const res = await request(app)
+      .put('/api/v1/orders/1')
+      .send({ quantity: 8 });
+
+    expect(res.body).toEqual({
+      id: '1',
+      quantity: 8,
+    });
+  });
+
+  it('ASYNC/AWAIT: deletes an order in our database with id 1', async () => {
+    await Order.insert({ quantity: 5 });
+    const res = await request(app).delete('/api/v1/orders/1');
+
+    expect(res.body).toEqual({});
+  });
 
   // it('ASYNC/AWAIT: creates a new order in our database and sends a text message', async () => {
   //   const res = await request(app)

@@ -25,16 +25,15 @@ module.exports = class OrderService {
     return order;
   }
 
-  // static async update({ quantity }) {
-  //   await sendSms(
-  //     process.env.ORDER_HANDLER_NUMBER,
-  //     `Updated Order received for ${quantity}`
-  //   );
+  static async updateWithId({ quantity }, id) {
+    await sendSms(
+      process.env.ORDER_HANDLER_NUMBER,
+      `Updated Order received for ${quantity}`
+    );
 
-  //   const order = await Order.insert({ quantity });
-
-  //   return order;
-  // }
+    const order = await Order.update(quantity, id);
+    return order;
+  }
 
   // static async delete({ quantity }) {
   //   await sendSms(process.env.ORDER_HANDLER_NUMBER, `Order Deleted`);

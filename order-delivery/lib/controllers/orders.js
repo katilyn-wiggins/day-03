@@ -23,13 +23,14 @@ module.exports = Router()
   .get('/:id', async (req, res, next) => {
     const allOrdersWithId = await OrderService.allOrdersWithId(req.params.id);
     res.send(allOrdersWithId);
+  })
+
+  .put('/:id', async (req, res, next) => {
+    const updateOrderWithId = await OrderService.updateWithId(
+      req.body,
+      req.params.id
+    );
+    res.send(updateOrderWithId);
   });
 
-// .get('/:id', async (req, res, next) => {})
-
-// .put('/:id', async (req, res, next) => {
-//   try {
-//     const update = await
-//   }
-// })
 // .delete('/:id', async (req, res, next) => {});
