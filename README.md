@@ -17,6 +17,8 @@ handler that an order was updated.
 When an order is deleted send a text message notifying the order
 handler that an order was deleted
 
+NO TEXT WHEN GETTING MESSAGES!
+
 ## Rubric
 
 - model class (3 points)

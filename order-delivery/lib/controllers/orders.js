@@ -14,13 +14,16 @@ module.exports = Router()
       next(err);
     }
   })
-  .get('/', async (req, res, next) => {})
-  .get('/:id', async (req, res, next) => {})
 
+  .get('/', async (req, res, next) => {
+    const getAllOrders = await OrderService.allOrders(req.body);
+  });
 
-  .put('/:id', async (req, res, next) => {
-    try {
-      const update = await 
-    }
-  })
-  .delete('/:id', async (req, res, next) => {});
+// .get('/:id', async (req, res, next) => {})
+
+// .put('/:id', async (req, res, next) => {
+//   try {
+//     const update = await
+//   }
+// })
+// .delete('/:id', async (req, res, next) => {});
