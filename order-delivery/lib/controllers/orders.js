@@ -16,5 +16,11 @@ module.exports = Router()
   })
   .get('/', async (req, res, next) => {})
   .get('/:id', async (req, res, next) => {})
-  .put('/:id', async (req, res, next) => {})
+
+
+  .put('/:id', async (req, res, next) => {
+    try {
+      const update = await 
+    }
+  })
   .delete('/:id', async (req, res, next) => {});
