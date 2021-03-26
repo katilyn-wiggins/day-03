@@ -44,9 +44,10 @@ module.exports = class Order {
     return new Order(rows[0]);
   }
 
-  static async trash(id) {
-    console.log(id);
-    const { rows } = await pool.query('DELETE from orders WHERE id=$1', [id]);
+  static async delete(id) {
+    const {
+      rows,
+    } = await pool.query('DELETE from orders WHERE id=$1 RETURNING *', [id]);
 
     return new Order(rows[0]);
   }

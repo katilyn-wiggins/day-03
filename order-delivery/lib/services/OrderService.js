@@ -38,7 +38,7 @@ module.exports = class OrderService {
   static async delete(id) {
     await sendSms(process.env.ORDER_HANDLER_NUMBER, `Order Deleted`);
 
-    const order = await Order.trash(id);
+    const order = await Order.delete(id);
 
     return order;
   }
