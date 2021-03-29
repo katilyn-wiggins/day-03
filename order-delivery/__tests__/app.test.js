@@ -6,7 +6,13 @@ const orders = require('../lib/controllers/orders');
 const Order = require('../lib/models/Order');
 const twilioUtils = require('../lib/utils/twilio');
 
-jest.mock('../lib/utils/twilio');
+// jest.mock('../lib/utils/twilio');
+
+jest.mock('twilio', () => () => ({
+  messages: {
+    create: jest.fn(),
+  },
+}));
 
 describe('03_separation-of-concerns-demo routes', () => {
   beforeEach(async () => {
